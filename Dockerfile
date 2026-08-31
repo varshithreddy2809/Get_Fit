@@ -15,15 +15,15 @@ FROM tomcat:11-jdk21-temurin
 # Remove default ROOT application
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# Copy built WAR file from builder stage
-COPY --from=builder /app/target/Gym_Membership.war /usr/local/tomcat/webapps/Gym_Membership.war
+# Copy built WAR file as ROOT so it deploys at root context
+COPY --from=builder /app/target/Gym_Membership.war /usr/local/tomcat/webapps/ROOT.war
 
 # Expose port 8080
 EXPOSE 8080
 
 # Health check configuration
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-  CMD curl -f http://localhost:8080/Gym_Membership/health || exit 1
+  CMD curl -f http://localhost:8080/health || exit 1
 
 # Start Tomcat
 CMD ["catalina.sh", "run"]
