@@ -21,5 +21,9 @@ COPY --from=builder /app/target/Gym_Membership.war /usr/local/tomcat/webapps/Gym
 # Expose port 8080
 EXPOSE 8080
 
+# Health check configuration
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD curl -f http://localhost:8080/Gym_Membership/health || exit 1
+
 # Start Tomcat
 CMD ["catalina.sh", "run"]
