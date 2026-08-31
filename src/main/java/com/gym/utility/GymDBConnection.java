@@ -21,13 +21,19 @@ public class GymDBConnection {
 			String dbPassword = System.getenv("DB_PASSWORD") != null ? System.getenv("DB_PASSWORD") : "root";
 			
 			// For Aiven MySQL with SSL
-			String dbUrl = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?useSSL=true&serverTimezone=UTC";
+			String dbUrl = "jdbc:mysql://" + dbHost + ":" + dbPort + "/" + dbName + "?useSSL=true&serverTimezone=UTC&connectTimeout=10000&socketTimeout=10000";
+			
+			System.out.println("[GymDBConnection] Attempting connection to: " + dbHost + ":" + dbPort + "/" + dbName);
 			
 			con = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-			System.out.println("Database connected successfully!");
 			
+			System.out.println("[GymDBConnection] Database connected successfully!");
+			
+		} catch (ClassNotFoundException e) {
+			System.out.println("[GymDBConnection] MySQL Driver not found: " + e.getMessage());
+			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("Database connection error: " + e);
+			System.out.println("[GymDBConnection] Database connection error: " + e.getMessage());
 			e.printStackTrace();
 		}
 		return con;
