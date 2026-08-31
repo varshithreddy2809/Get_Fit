@@ -16,7 +16,7 @@ FROM tomcat:11-jdk21-temurin
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
 # Copy built WAR file from builder stage
-COPY --from=builder /app/build/libs/*.war /usr/local/tomcat/webapps/Gym_Membership.war
+COPY --from=builder /app/target/Gym_Membership.war /usr/local/tomcat/webapps/Gym_Membership.war
 
 # Expose port 8080
 EXPOSE 8080
