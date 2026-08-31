@@ -52,7 +52,6 @@
 
     <build>
         <sourceDirectory>src/main/java</sourceDirectory>
-        <webappDirectory>src/main/webapp</webappDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -69,7 +68,6 @@
                 <version>3.3.2</version>
                 <configuration>
                     <warName>Gym_Membership</warName>
-                    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
                 </configuration>
             </plugin>
         </plugins>
