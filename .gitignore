@@ -1,0 +1,39 @@
+# Build artifacts
+build/
+target/
+bin/
+*.class
+*.jar
+*.war
+
+# IDE
+.classpath
+.project
+.settings/
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+*.log
+
+# Maven
+.m2/
+.maven/
+
+# Gradle
+.gradle/
+gradle/
+
+# Node (if you have frontend dependencies)
+node_modules/
+npm-debug.log
+package-lock.json
+
+# Environment
+.env
+.env.local
