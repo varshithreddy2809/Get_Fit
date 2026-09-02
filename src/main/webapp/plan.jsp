@@ -994,7 +994,7 @@ for(String meal : diet){
 
 
 
-<!-- ================= PROGRESS ================= -->
+
 
 <div class="modal fade" id="progressModal">
 
